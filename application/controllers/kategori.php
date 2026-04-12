@@ -68,7 +68,7 @@ class kategori extends CI_Controller{
                 'nama_kategori'=>$this->input->post('nama_kategori')
             ];
             $this->kategori_model->update($id, $data);
-            $this->session->set_flashdata('succes', 'Data berhasil di update');
+            $this->session->set_flashdata('success', 'Data berhasil di update');
             redirect('kategori');
         }
     }

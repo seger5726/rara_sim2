@@ -1,7 +1,7 @@
 <?php
-defined('BASEPATH') OR exit('No direct script acces allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kategori_model extends CI_Model{
+class kategori_model extends CI_Model{
 
     private $table ='kategori';
 
