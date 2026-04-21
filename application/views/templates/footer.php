@@ -1,9 +1,12 @@
+</div>
+</div>
 
 <script src=<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>></script>
 <script src=<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>></script>
 <!--DataTables JS--->
 <script src=<?= base_url('assets/vendor/datatables/jquery.dataTables.min.js'); ?>></script>
 <script src=<?= base_url('assets/vendor/datatables/dataTables.bootstrap4.min.js'); ?>></script>
+<script src=<?= base_url('assets/vendor/chart.js/Chart.min.js'); ?>></script>
 <script src=<?= base_url('assets/js/sb-admin-2.min.js'); ?>></script>
 
 <script>
@@ -20,6 +23,36 @@
         }
     });
 });
+    </script>
+    <script>
+        var ctx= document.getElementById("chartDashboard");
+        var chart= new Chart(ctx,{
+            type: 'pie',
+            data: {
+                labels:['Kategori', 'Buku'],
+                datasets:[{
+                label:'Jumlah Data',
+                data:[
+                    <?= $total_kategori; ?>,
+                    <?= $total_buku; ?>
+                ],
+                backgroundColor:[
+                    '#4e73df',
+                    '#1cc88a'
+                ]
+            }]
+        },
+        options:{
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                    }
+                }]
+            }
+        }
+    });
     </script>
 </body>
 </html>
