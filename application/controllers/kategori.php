@@ -7,6 +7,9 @@ class Kategori extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Kategori_model');
+        if (!$this->session->userdata('login')){
+            redirect('login');
+        }
     }
     public function index()
     {
