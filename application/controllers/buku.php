@@ -90,4 +90,24 @@ class Buku extends CI_Controller {
         $this->session->set_flashdata('success', 'Data berhasil diupdate');
         redirect('buku');
     }
+
+    public function cetak_buku()
+    {
+        $penulis = $this->input->get('penulis');
+        $penerbit = $this->input->get('penerbit');
+
+        $this->db->from('buku');
+
+        if($penulis){
+            $this->db->where('penulis', $penulis);
+        }
+        if($penerbit){
+            $this->db->where('penerbit', $penerbit);
+        }
+        $data['data'] = $this->db->get()->result();
+        $data['penulis']= $penulis;
+        $data['penerbit']= $penerbit;
+
+        $this->load->view('laporan/cetak_buku', $data);
+    }
 }

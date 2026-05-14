@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <title>Cetak Laporan</title>
+    <title>Cetak Laporan Anggota</title>
 
     <style>
         body{font-family: Arial;}
@@ -23,25 +23,30 @@
         </style>
     </head>
 <body>
-    <h3> Laporan Peminjaman</h3>
+    <h3> Laporan Anggota</h3>
     <?php if($bulan): ?>
         <p>Bulan: <?= $bulan; ?></p>
-        <?php endif; ?>
-        <table class="table table-bordered mt-3">
+    <?php endif; ?>
+    <?php if($nama): ?>
+        <p>Nama: <?= $nama; ?></p>
+    <?php endif; ?>
+    <table class="table table-bordered mt-3">
     <tr>
         <th>No</th>
-        <th>Kode peminjaman</th>
         <th>Nama</th>
-        <th>Tanggal</th>
-        <th>Status</th>
+        <th>Alamat</th>
+        <th>Telepon</th>
+        <th>Email</th>
+        <th>Tanggal Daftar</th>
     </tr>
     <?php $no=1; foreach($data as $d): ?>
     <tr>
         <td><?= $no++; ?></td>
-        <td><?= $d->kode_peminjaman; ?></td>
         <td><?= $d->nama; ?></td>
-        <td><?= $d->tanggal_pinjam; ?></td>
-        <td><?= $d->status; ?></td>
+        <td><?= $d->alamat; ?></td>
+        <td><?= $d->telepon; ?></td>
+        <td><?= $d->email; ?></td>
+        <td><?= $d->tanggal_daftar; ?></td>
     </tr>
     <?php endforeach; ?>
     </table>

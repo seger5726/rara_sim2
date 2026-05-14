@@ -77,4 +77,24 @@ class Anggota extends CI_Controller {
         $this->Anggota_model->delete($nomor_anggota);
         redirect('anggota');
     }
+
+    public function cetak_anggota()
+    {
+        $bulan = $this->input->get('bulan');
+        $nama = $this->input->get('nama');
+
+        $this->db->from('anggota');
+
+        if($bulan){
+            $this->db->where('DATE_FORMAT(tanggal_daftar, "%Y-%m")=', $bulan);
+        }
+        if($nama){
+            $this->db->like('nama', $nama);
+        }
+        $data['data'] = $this->db->get()->result();
+        $data['bulan']= $bulan;
+        $data['nama']= $nama;
+
+        $this->load->view('laporan/cetak_daftar', $data);
+    }
 }
