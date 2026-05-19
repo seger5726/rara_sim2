@@ -24,7 +24,7 @@ class peminjaman_model extends CI_model{
             'qty' => 1
         ]);
         $this->db->set('stok','stok -1',FALSE);
-        $this->db->where('id_buku',$buku_id);
+        $this->db->where('kode_buku',$buku_id);
         $this->db->update('buku');
     }
 
